@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closures</title>
+  </head>
+  <body>
+    <a href="/exercises/">Go Back</a>
+    <p><em>Open the console!</em></p>
+
+    <script>
+      //IFFE
+      (() => {
+        let color = "green";
+
+        const printColor = () => {
+          console.log(color);
+        };
+
+        printColor();
+      })();
+
+      //function that get back functions
+
+      const makeColorPrinter = (color) => {
+        let colorMessage = `the color is ${color}`;
+
+        return function () {
+          console.log(colorMessage);
+        };
+      };
+
+      let greenColorPrinter = makeColorPrinter("green");
+      console.log(greenColorPrinter());
+
+      //private variables
+
+      /* const counter = {
+        count: 3
+      }; */
+
+      const makeCounter = (n) => {
+        let count = n;
+
+        return {
+          incrase: () => {
+            count = count + 1;
+          },
+          decrease: () => {
+            count = count - 1;
+          },
+          getCount: () => {
+            return count;
+          },
+        };
+      };
+
+      let counter = makeCounter(7);
+
+      console.log(`The count is:`, counter.getCount());
+      counter.incrase();
+      console.log(`The count is:`, counter.getCount());
+      counter.decrease();
+      counter.decrease();
+      counter.decrease();
+      counter.decrease();
+      counter.decrease();
+      console.log(`The count is:`, counter.getCount());
+    </script>
+  </body>
+</html>
