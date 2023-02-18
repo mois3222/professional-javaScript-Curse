@@ -8,7 +8,4 @@ const d = document,
 const player = new MediaPlayer({ el: $video, plugins: [new Autoplay()] });
 
 $button.onclick = () => player.togglePlay();
-player._initplugins();
-
-/*       $video.play();
- */
+// player._initplugins();
