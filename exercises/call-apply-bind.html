@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Function.prtotype.call.function.prototype.apply and functio.prototype.bind
+    </title>
+  </head>
+  <body>
+    <a href="/exercises/">Go Back</a>
+
+    <em><p>Open the console!</p></em>
+
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender Más</button></li>
+      <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+    </ul>
+
+    <script>
+      // You establishes this using 'call'.
+      function greeting() {
+        console.log(`Hi i'm ${this.name} ${this.lastname}`);
+      }
+
+      const richard = {
+        name: "Richard",
+        lastname: "Kaufman López",
+      };
+
+      //You establishes this using call and give it arguments of the function
+      greeting.call(richard);
+
+      function walking(meters, direction) {
+        console.log(`${this.name} walking: ${meters} toward: ${direction}`);
+      }
+
+      walking.call(richard, 400, "north");
+      //You establishes this using apply and give it arguments of the function.
+      walking.apply(richard, [800, "northeast"]);
+
+      /*
+        Call = comma.
+        Apply = array.
+      */
+
+      //establishes 'this' in a new function using 'bind'.
+      const daniel = {
+        name: "Daniel",
+        lastname: "Sanchez",
+      };
+
+      const DANIEL_GRETTING = greeting.bind(daniel);
+      DANIEL_GRETTING();
+
+      const DANIEL_WALKING = walking.bind(daniel, 1000);
+      DANIEL_WALKING("Oeste");
+
+      //example.
+
+      const $button = document.getElementsByClassName("call-to-action");
+
+      //   $button.forEach((button) => {
+      //     button.onclick = () => {
+      //       alert(`Ever not stop of leraning!!`);
+      //     };
+      //   });
+
+      ///NodeList
+
+      Array.prototype.forEach.call($button, (button) => {
+        button.onclick = () => alert(`Ever not stop of leraning!!`);
+      });
+    </script>
+  </body>
+</html>
