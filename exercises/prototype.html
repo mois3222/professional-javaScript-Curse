@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype</title>
+  </head>
+  <body>
+    <a href="/exercises/">Go Back</a>
+
+    <em><p>Open the console!</p></em>
+
+    <script>
+      //a Commun Object.
+      /* const zelda = {
+        name: "zelda",
+      };
+
+      zelda.gretting = function () {
+        console.log(`Hello i'm ${this.name}`);
+      };
+
+      zelda.gretting();
+
+      const link = {
+        name: "Link",
+      };
+
+      link.gretting = function () {
+        console.log(`Hello i'm ${this.name}`);
+      };
+
+      link.gretting(); */
+
+      //we're a littel bit more efficient.
+
+      class Hero {
+        constructor(name) {
+          this.name = name;
+        }
+
+        greeting() {
+          console.log(`Hello i'm ${this.name}`);
+        }
+      }
+
+      const zelda = new Hero("Zelda");
+      zelda.greeting();
+
+      const link = new Hero("Link");
+      link.greeting();
+    </script>
+  </body>
+</html>
